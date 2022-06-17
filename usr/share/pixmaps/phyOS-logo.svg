@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.0"
+   width="512.000000pt"
+   height="512.000000pt"
+   viewBox="0 0 512.000000 512.000000"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg10"
+   sodipodi:docname="logo-512x512.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="pt"
+     showgrid="false"
+     inkscape:zoom="1.7138672"
+     inkscape:cx="224.63818"
+     inkscape:cy="341.33333"
+     inkscape:window-width="1387"
+     inkscape:window-height="1352"
+     inkscape:window-x="8"
+     inkscape:window-y="67"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <g
+     transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+     fill="#000000"
+     stroke="none"
+     id="g8"
+     style="fill:#2c5cdd;fill-opacity:1">
+    <path
+       d="M70 4716 c0 -2 71 -127 158 -277 l157 -274 1462 -5 1463 -5 -340 -590 c-188 -324 -339 -595 -338 -602 4 -19 312 -552 319 -553 3 0 10 10 16 23 6 12 302 526 658 1142 356 616 650 1126 652 1132 4 10 -415 13 -2101 13 -1158 0 -2106 -2 -2106 -4z"
+       id="path2"
+       style="fill:#2c5cdd;fill-opacity:1" />
+    <path
+       d="M3679 3464 c-399 -691 -730 -1256 -735 -1257 -5 0 -158 258 -341 574 -183 316 -336 580 -340 587 -6 10 -77 12 -330 10 l-322 -3 653 -1132 c359 -623 660 -1142 667 -1154 14 -20 72 79 914 1537 494 858 968 1678 1052 1823 84 145 153 266 153 268 0 2 -145 3 -323 3 l-323 0 -725 -1256z"
+       id="path4"
+       style="fill:#2c5cdd;fill-opacity:1" />
+    <path
+       d="M453 4053 c35 -69 2103 -3643 2107 -3643 6 0 304 513 315 542 4 10 -272 498 -719 1272 -399 691 -726 1261 -726 1266 0 6 259 10 688 10 l687 1 155 271 c85 150 157 275 158 280 2 4 -598 8 -1333 8 -735 0 -1334 -3 -1332 -7z"
+       id="path6"
+       style="fill:#2c5cdd;fill-opacity:1" />
+  </g>
+</svg>
