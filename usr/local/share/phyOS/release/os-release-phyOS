@@ -1,0 +1,7 @@
+NAME=phyOS
+ID=phyOS
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="0;37"
+HOME_URL="https://phytech.io/"
+LOGO=phyOS-logo

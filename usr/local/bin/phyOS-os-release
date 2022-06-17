@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sudo cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release
+sudo cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release-phyOS

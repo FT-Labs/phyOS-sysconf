@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo /usr/bin/reflector --score 100 --fastest 10 --number 10 --verbose --save /etc/pacman.d/mirrorlist
