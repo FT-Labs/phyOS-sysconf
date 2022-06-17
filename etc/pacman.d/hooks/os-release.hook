@@ -5,6 +5,6 @@ Type = Package
 Target = filesystem
 
 [Action]
-Description = Add ArcoLinux specific config
+Description = phyOS config
 When = PostTransaction
-Exec = /bin/sh -c "/usr/local/bin/arcolinux-os-release"
+Exec = /bin/sh -c "/usr/local/bin/phyOS-os-release"

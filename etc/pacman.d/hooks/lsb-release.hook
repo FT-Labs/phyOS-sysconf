@@ -5,6 +5,6 @@ Type = Package
 Target = lsb-release
 
 [Action]
-Description = Add ArcoLinux specific config
+Description = phyOS release
 When = PostTransaction
-Exec = /bin/sh -c "/usr/local/bin/arcolinux-lsb-release"
+Exec = /bin/sh -c "/usr/local/bin/phyOS-lsb-release"
