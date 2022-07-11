@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = grub
+
+[Action]
+Description = Pacman hook to remove grub welcome messages
+When = PostTransaction
+Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d'"
