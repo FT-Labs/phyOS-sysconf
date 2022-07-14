@@ -3,5 +3,5 @@ ID=phyOS
 ID_LIKE=arch
 BUILD_ID=rolling
 ANSI_COLOR="0;37"
-HOME_URL="https://phytech.io/"
+HOME_URL="https://ftlabs.tech/"
 LOGO=phyOS-logo

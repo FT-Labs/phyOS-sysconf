@@ -6,6 +6,6 @@ Type = Package
 Target = grub
 
 [Action]
-Description = Pacman hook to remove grub welcome messages
+Description = Pacman hook to remove grub messages
 When = PostTransaction
-Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d'"
+Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'"

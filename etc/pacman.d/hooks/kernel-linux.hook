@@ -23,4 +23,4 @@ Target = linux-jwrdegoede*
 [Action]
 Description = Pacman hook to update-grub automatically & remove grub welcome messages
 When = PostTransaction
-Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d'"; /bin/sh -c "grub-mkconfig -o /boot/grub/grub.cfg"
+Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'"; /bin/sh -c "grub-mkconfig -o /boot/grub/grub.cfg"
