@@ -8,4 +8,4 @@ Target = phyOS-system-scripts
 [Action]
 Description = phyOS change environment
 When = PostTransaction
-Exec = /bin/sh -c "mv /usr/share/phyos/util/environment /etc/environment"
+Exec = /bin/sh -c "cp -f /usr/share/phyos/util/environment /etc/environment"
