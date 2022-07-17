@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = pam
+Target = phyOS-system-scripts
+
+[Action]
+Description = phyOS change environment
+When = PostTransaction
+Exec = /bin/sh -c "mv /usr/share/phyos/util/environment /etc/environment"
