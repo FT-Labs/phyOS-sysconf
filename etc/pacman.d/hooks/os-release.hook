@@ -5,6 +5,6 @@ Type = Package
 Target = filesystem
 
 [Action]
-Description = ### phyOS release ###
+Description = phyOS config
 When = PostTransaction
 Exec = /bin/sh -c "/usr/local/bin/phyOS-os-release"

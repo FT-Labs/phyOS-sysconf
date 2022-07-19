@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = grub
+
+[Action]
+Description = Pacman hook to remove grub messages
+When = PostTransaction
+Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'";/bin/sh -c  "/usr/local/bin/grub-kernel /boot/efi/EFI/phyOS/grubx64.efi"
