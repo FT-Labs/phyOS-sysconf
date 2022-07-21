@@ -6,6 +6,6 @@ Target = pam
 Target = phyOS-system-scripts
 
 [Action]
-Description = phyOS change environment
+Description = ### phyOS change environment ###
 When = PostTransaction
 Exec = /bin/sh -c "cp -f /usr/share/phyos/util/environment /etc/environment"
