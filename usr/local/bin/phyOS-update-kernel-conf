@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sudo cp -f /usr/local/share/phyOS/mkinitcpio.conf /etc/
+sudo cp -f /usr/local/share/phyOS/mkinitcpio-nokms.conf /etc/
+sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/
+sudo cp -f /usr/local/share/phyOS/grub/grub /etc/default/grub
+sudo mkinitcpio -P
+sudo phyOS-grub-conf
+echo "### Grub theme reset please set it again ###"
+sudo grub-mkconfig -o /boot/grub/grub.cfg

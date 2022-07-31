@@ -6,6 +6,6 @@ Type = Package
 Target = grub
 
 [Action]
-Description = Pacman hook to remove grub messages
+Description = ### Pacman hook to handle grub config ###
 When = PostTransaction
-Exec = /bin/sh -c "find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'";/bin/sh -c  "/usr/local/bin/grub-kernel /boot/efi/EFI/phyOS/grubx64.efi"
+Exec = /usr/local/bin/phyOS-grub-conf
