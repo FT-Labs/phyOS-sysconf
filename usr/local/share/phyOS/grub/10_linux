@@ -319,6 +319,18 @@ while [ "x$list" != "x" ] ; do
                 "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
   fi
 
+  if test -e "${dirname}/initramfs-${version}-nokms.img" ; then
+    initrd="${initrd_early} initramfs-${version}-nokms.img"
+
+    if test -n "${initrd}" ; then
+      gettext_printf "Found nokms initrd image(s) in %s:%s\n" "${dirname}" "${initrd_extra} ${initrd}" >&2
+    fi
+
+    linux_entry "${OS}" "${version}" nokms \
+                "${GRUB_CMDLINE_LINUX_NOKMS} ${GRUB_CMDLINE_LINUX_NOKMS_DEFAULT}"
+  fi
+
+
   if test -e "${dirname}/booster-${version}.img" ; then
     initrd="${initrd_early} booster-${version}.img"
 
