@@ -8,7 +8,7 @@ configuration {
 	kb-row-right: "l";
 }
 
-@import "styles/colors.rasi"
+@import "../colors/catppuccin.rasi"
 
 window {
     transparency:                   "real";
