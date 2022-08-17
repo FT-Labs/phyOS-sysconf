@@ -9,23 +9,18 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	font:							"Sofia Pro 16";
-    show-icons:                     false;
-    drun-display-format:            "{name}";
-    disable-history:                false;
-	sidebar-mode: 					false;
+    show-icons:                 false;
 }
-
 
 /*****----- Global Properties -----*****/
 * {
     font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #2D1B14;
-    background-alt:              #462D23;
+    background:                  #11092D;
+    background-alt:              #281657;
     foreground:                  #FFFFFF;
-    selected:                    #E25F3E;
-    active:                      #716251;
-    urgent:                      #934A1C;
+    selected:                    #DF5296;
+    active:                      #6E77FF;
+    urgent:                      #8E3596;
 }
 
 /*
@@ -38,7 +33,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       1000px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -66,11 +61,11 @@ mainbox {
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     0px;
-    padding:                     100px 80px;
+    spacing:                     20px;
+    padding:                     100px 40px;
     background-color:            transparent;
-    background-image:            url("~/.config/rofi/images/d.png", width);
-    children:                    [ "textbox-prompt-colon", "dummy","prompt"];
+    background-image:            url("~/.config/rofi/images/j.jpg", width);
+    children:                    [ "textbox-prompt-colon", "prompt"];
 }
 
 dummy {
@@ -81,17 +76,21 @@ textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         " System";
-    padding:                     12px;
-    border-radius:               100%;
+    padding:                     15px;
+    border:                      0px 0px 0px 10px;
+    border-radius:               100% 100% 0px 100%;
+    border-color:                @selected;
     background-color:            @urgent;
     text-color:                  @foreground;
 }
 prompt {
     enabled:                     true;
-    padding:                     12px;
-    border-radius:               100%;
+    padding:                     15px;
+    border:                      0px;
+    border-radius:               0px 100% 100% 100%;
+    border-color:                @selected;
     background-color:            @active;
-    text-color:                  @foreground;
+    text-color:                  @background;
 }
 
 /*****----- Listview -----*****/
@@ -107,8 +106,8 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
 
-    spacing:                     15px;
-    margin:                      15px;
+    spacing:                     30px;
+    margin:                      30px;
     background-color:            transparent;
     cursor:                      "default";
 }
@@ -116,8 +115,8 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     28px 10px;
-    border-radius:               100%;
+    padding:                     35px 10px;
+    border-radius:               55px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
@@ -138,9 +137,9 @@ element selected.normal {
 /*****----- Message -----*****/
 message {
     enabled:                     true;
-    margin:                      0px 15px 15px 15px;
+    margin:                      0px;
     padding:                     15px;
-    border-radius:               100%;
+    border-radius:               0px;
     background-color:            @background-alt;
     text-color:                  @foreground;
 }
