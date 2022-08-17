@@ -9,6 +9,7 @@
 * {
     background:     #15161EFF;
     background-alt: #1A1B26FF;
+    border:         #000B83FF;
     foreground:     #C0CAF5FF;
     selected:       #33467CFF;
     active:         #414868FF;

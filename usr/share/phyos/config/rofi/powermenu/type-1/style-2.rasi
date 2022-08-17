@@ -7,10 +7,15 @@
  * Rofi Version: 1.7.3
  **/
 
+
 /*****----- Configuration -----*****/
 configuration {
-    show-icons:                 false;
+    show-icons:                     false;
+    disable-history:                false;
+    kb-element-prev: "h,j";
+    kb-element-next: "l,k";
 }
+
 
 /*****----- Global Properties -----*****/
 @import "~/.config/rofi/colors.rasi"
@@ -132,6 +137,7 @@ error-message {
 listview {
     enabled:                     true;
     columns:                     5;
+    expand:                      false;
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
@@ -170,7 +176,7 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.5;
+    vertical-align:              0;
     horizontal-align:            0.5;
 }
 element selected.normal {

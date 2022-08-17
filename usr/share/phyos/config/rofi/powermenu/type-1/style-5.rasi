@@ -9,8 +9,12 @@
 
 /*****----- Configuration -----*****/
 configuration {
-    show-icons:                 false;
+    show-icons:                     false;
+    disable-history:                false;
+    kb-element-prev: "h,j";
+    kb-element-next: "l,k";
 }
+
 
 /*****----- Global Properties -----*****/
 @import "~/.config/rofi/colors.rasi"
@@ -133,6 +137,7 @@ error-message {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
+    expand:                      false;
     columns:                     5;
     lines:                       1;
     cycle:                       true;
@@ -172,7 +177,7 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.5;
+    vertical-align:              0;
     horizontal-align:            0.5;
 }
 element selected.normal {

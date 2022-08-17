@@ -7,16 +7,15 @@
  * Rofi Version: 1.7.3
  **/
 
+
 /*****----- Configuration -----*****/
 configuration {
-	font:							"Sofia Pro 16";
     show-icons:                     false;
-    drun-display-format:            "{name}";
     disable-history:                false;
-	sidebar-mode: 					false;
-	kb-row-left: "h";
-	kb-row-right: "l";
+    kb-element-prev: "h,j";
+    kb-element-next: "l,k";
 }
+
 
 
 /*****----- Global Properties -----*****/

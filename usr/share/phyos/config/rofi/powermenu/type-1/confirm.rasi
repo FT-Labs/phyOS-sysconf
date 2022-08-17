@@ -2,19 +2,21 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Rofi Theme File
  * Rofi Version: 1.7.3
  **/
 
+
 /*****----- Configuration -----*****/
 configuration {
-    show-icons:                 false;
+    show-icons:                     false;
+    disable-history:                false;
+    kb-element-prev: "h,j";
+    kb-element-next: "l,k";
 }
 
-/*****----- Global Properties -----*****/
-@import                          "colors.rasi"
-@import                          "fonts.rasi"
+@import                          "~/.config/rofi/colors.rasi"
 
 /*****----- Main Window -----*****/
 window {
@@ -64,7 +66,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     30px;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -84,7 +86,7 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0.5;
+    vertical-align:              0;
     horizontal-align:            0.5;
 }
 element selected.normal {

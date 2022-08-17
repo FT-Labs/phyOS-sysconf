@@ -9,13 +9,11 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	font:							"Sofia Pro 16";
     show-icons:                     false;
-    drun-display-format:            "{name}";
     disable-history:                false;
-	sidebar-mode: 					false;
-	kb-row-left: "h";
-	kb-row-right: "l";
+    font: "Sofia Pro Bold 14";
+    kb-element-prev: "h,j";
+    kb-element-next: "l,k";
 }
 
 
