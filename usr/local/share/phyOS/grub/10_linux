@@ -198,8 +198,7 @@ title_correction_code=
 submenu_indentation=""
 
 is_top_level=true
-while [ "x$list" != "x" ] ; do
-  linux=`version_find_latest $list`
+for linux in ${reverse_sorted_list}; do
   gettext_printf "Found linux image: %s\n" "$linux" >&2
   basename=`basename $linux`
   dirname=`dirname $linux`
