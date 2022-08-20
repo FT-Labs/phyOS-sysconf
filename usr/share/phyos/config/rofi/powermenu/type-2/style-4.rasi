@@ -11,8 +11,18 @@
 configuration {
     show-icons:                     false;
     disable-history:                false;
-    kb-element-prev: "h,j";
-    kb-element-next: "l,k";
+    kb-row-left: "";
+    kb-row-right: "";
+    kb-row-up: "";
+    kb-row-down: "";
+    kb-column-left: "";
+    kb-column-right: "";
+    kb-column-down: "";
+    kb-column-up: "";
+    kb-move-char-back: "Control+b";
+    kb-move-char-forward: "Control+f";
+    kb-element-prev: "h,j,Left,Up";
+    kb-element-next: "l,k,Right,Down";
 }
 
 

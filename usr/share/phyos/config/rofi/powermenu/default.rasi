@@ -4,8 +4,18 @@ configuration {
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;
-	kb-row-left: "h";
-	kb-row-right: "l";
+    kb-row-left: "";
+    kb-row-right: "";
+    kb-row-up: "";
+    kb-row-down: "";
+    kb-column-left: "";
+    kb-column-right: "";
+    kb-column-down: "";
+    kb-column-up: "";
+    kb-move-char-back: "Control+b";
+	kb-move-char-forward: "Control+f";
+    kb-element-prev: "h,j,Left,Up";
+	kb-element-next: "l,k,Right,Down";
 }
 
 @import "~/.config/rofi/colors.rasi"
