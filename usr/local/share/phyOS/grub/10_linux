@@ -197,6 +197,9 @@ title_correction_code=
 # yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
 submenu_indentation=""
 
+reverse_sorted_list=$(echo $list | tr ' ' '\n' | sed -e 's/\.old$/ 1/; / 1$/! s/$/ 2/' | version_sort -r | sed -e 's/ 1$/.old/; s/ 2$//')
+
+
 is_top_level=true
 for linux in ${reverse_sorted_list}; do
   gettext_printf "Found linux image: %s\n" "$linux" >&2
