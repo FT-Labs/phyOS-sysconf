@@ -1,8 +1,15 @@
 #!/bin/bash
 
+[[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf"
+
 sudo cp -f /usr/local/share/phyOS/mkinitcpio.conf /etc/
 sudo cp -f /usr/local/share/phyOS/mkinitcpio-nokms.conf /etc/
-sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/
+
+if [[ $PLYMOUTH = "true" ]]; then
+    sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.plymouth.preset /etc/mkinitcpio.d/
+else
+    sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/
+fi
 sudo cp -f /usr/local/share/phyOS/grub/grub /etc/default/grub
 sudo mkinitcpio -P
 sudo /usr/local/bin/phyOS-grub-conf

@@ -1,6 +1,10 @@
 #!/bin/bash
 
-sudo cp -f /usr/local/share/phyOS/grub/10_linux /etc/grub.d/10_linux
+[[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf"
+
+if [[ $PLYMOUTH = "true" ]]; then
+    sudo cp -f /usr/local/share/phyOS/grub/10_linux /etc/grub.d/10_linux
+    sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/a \ \ GRUB_CMDLINE_LINUX_NOKMS\ \\\n\ \ GRUB_CMDLINE_LINUX_NOKMS_DEFAULT\ \\' /usr/bin/grub-mkconfig
+fi
 sudo find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'
 sudo /usr/local/bin/grub-kernel /boot/efi/EFI/phyOS/grubx64.efi > /dev/null 2>&1
-sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/a \ \ GRUB_CMDLINE_LINUX_NOKMS\ \\\n\ \ GRUB_CMDLINE_LINUX_NOKMS_DEFAULT\ \\' /usr/bin/grub-mkconfig
