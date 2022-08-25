@@ -31,6 +31,30 @@ case $manpage in *\(*\))
     ;;
 esac
 
+parse_py() {
+    pycmd=$(cat <<EOF
+import sys
+root_indent = -1
+s = ""
+for line in sys.stdin:
+    if len(line) <= 1:
+        continue
+    cnt = 0
+    while line[cnt] == ' ':
+        cnt += 1
+    if root_indent == -1:
+        root_indent = cnt
+        s += line.strip(" \n") + ";"
+    elif root_indent == cnt:
+        s += "\n;" + line.strip(" \n") + ";"
+    else:
+        s += line[2 * root_indent:]
+print(s)
+EOF
+)
+    python3 -c "$pycmd" "$1"
+}
+
 parse=$(man ${section:+-s $section} "$manpage" | perl -n -e '
 BEGIN {
     $option = "'$option'";
@@ -61,6 +85,6 @@ if (!$inside_option) {
 ')
 case "$1" in
     dwm) echo "$parse" | awk 'NR>=3 {print}' | tr -s "\n" | tr "\n" ";" | tr -s " " | cut -c 3- ;;
-    phyos) echo "$parse" | awk 'NR>1 {print}' | manparse ;;
-    *) echo "$parse" | awk 'NR>1 {print}' ;;
+    phyos) echo "$parse" | awk 'NR>1 {print}' | parse_py ;;
+    *) echo "$parse" | awk 'NR>1 {print}' | parse_py ;;
 esac
