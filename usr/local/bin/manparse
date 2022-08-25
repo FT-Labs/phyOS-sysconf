@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import subprocess
+import sys
+import os
+
+
+root_indent = -1
+s = ""
+for line in sys.stdin:
+    cnt = 0
+    while line[cnt] == ' ':
+        cnt += 1
+    if root_indent == -1:
+        root_indent = cnt
+        s += line.strip(" \n") + ";"
+    elif root_indent == cnt:
+        s += ";" + line.strip(" \n") + ";"
+    else:
+        s += "\n" + line[root_indent:].strip("\n")
+
+print(s)

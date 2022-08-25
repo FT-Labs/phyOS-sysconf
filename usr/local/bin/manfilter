@@ -31,7 +31,7 @@ case $manpage in *\(*\))
     ;;
 esac
 
-man ${section:+-s $section} "$manpage" | perl -n -e '
+parse=$(man ${section:+-s $section} "$manpage" | perl -n -e '
 BEGIN {
     $option = "'$option'";
     $inside_option = 0;
@@ -58,4 +58,9 @@ if (!$inside_option) {
         print;
     }
 }
-' | awk 'NR>=3 {print}' | tr -s "\n" | tr "\n" ";" | tr -s " " | cut -c 3-
+')
+case "$1" in
+    dwm) echo "$parse" | awk 'NR>=3 {print}' | tr -s "\n" | tr "\n" ";" | tr -s " " | cut -c 3- ;;
+    phyos) echo "$parse" | awk 'NR>1 {print}' | manparse ;;
+    *) echo "$parse" | awk 'NR>1 {print}' ;;
+esac
