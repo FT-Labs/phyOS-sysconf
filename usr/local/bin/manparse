@@ -8,15 +8,18 @@ import os
 root_indent = -1
 s = ""
 for line in sys.stdin:
+    if len(line) <= 1:
+        continue
     cnt = 0
     while line[cnt] == ' ':
         cnt += 1
+    line = line.strip(" ")
     if root_indent == -1:
         root_indent = cnt
         s += line.strip(" \n") + ";"
     elif root_indent == cnt:
-        s += ";" + line.strip(" \n") + ";"
+        s += "\n;" + line.strip(" \n") + ";"
     else:
-        s += "\n" + line[root_indent:].strip("\n")
+        s += line
 
 print(s)
