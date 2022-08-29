@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = phyOS-dwm
+
+[Action]
+Description = ### Renew phyOS-dwm after update ###
+When = PostTransaction
+Exec = /usr/share/phyos/util-scripts/pOS-powermenu restart
