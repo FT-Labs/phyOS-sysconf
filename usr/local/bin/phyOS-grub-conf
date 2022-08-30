@@ -7,3 +7,5 @@ if [[ $PLYMOUTH = "true" ]]; then
     sudo sed -i '/GRUB_CMDLINE_LINUX_DEFAULT/a \ \ GRUB_CMDLINE_LINUX_NOKMS\ \\\n\ \ GRUB_CMDLINE_LINUX_NOKMS_DEFAULT\ \\' /usr/bin/grub-mkconfig
 fi
 sudo find /etc/grub.d/ -name '*linux*' | xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g'
+sudo grub-install
+sudo grub-mkconfig -o /boot/grub/grub.cfg
