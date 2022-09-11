@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export LD_LIBRARY_PATH="$HOME/.config/phyos/dwm"
+export LD_LIBRARY_PATH="$HOME/.config/phyos/pdwm"
