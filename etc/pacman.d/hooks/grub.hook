@@ -4,7 +4,6 @@ Operation = Upgrade
 Operation = Remove
 Type = Package
 Target = grub
-Target = phyOS-sysconf
 
 [Action]
 Description = ### Pacman hook to handle grub config ###
