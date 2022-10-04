@@ -1,0 +1,17 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+Target=nvidia-lts
+Target=nvidia-dkms
+Target=nvidia-beta
+Target=nvidia-340xx
+Target=nvidia-390xx
+Target=dkms
+
+[Action]
+Description = ### Pacman hook for nvidia modesetting ###
+When = PostTransaction
+Exec = /bin/sh -c 'echo "options nvidia-drm modeset=1" > /etc/modprobe.d/nvidia-drm.conf'

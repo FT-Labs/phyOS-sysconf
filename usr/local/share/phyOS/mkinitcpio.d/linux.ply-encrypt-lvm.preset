@@ -3,9 +3,10 @@
 PRESETS=('default' 'safegraphics')
 
 ALL_kver='/boot/vmlinuz-linux'
-ALL_config='/usr/local/share/phyOS/mkinitcpio.d/mkinitcpio.conf'
+ALL_config="/usr/local/share/phyOS/mkinitcpio.d/mkinitcpio-ply-encrypt-lvm.conf"
+
 default_image="/boot/initramfs-linux.img"
 
-#fallback_config=""
+safegraphics_config="/usr/local/share/phyOS/mkinitcpio.d/mkinitcpio-encrypt-lvm.conf"
 safegraphics_image="/boot/initramfs-linux-safegraphics.img"
 safegraphics_options="-S autodetect"

@@ -2,14 +2,32 @@
 
 [[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf"
 
+device=$(phyOS-getcrypt)
+is_lvm=$(lsblk $device | awk '{print $(NF-1)}' | grep lvm)
+is_encrypt=$?
+
 if [[ $PLYMOUTH = "true" ]]; then
-    sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.plymouth.preset /etc/mkinitcpio.d/
-    sudo cp -f /usr/local/share/phyOS/mkinitcpio.conf /etc/
-    sudo cp -f /usr/local/share/phyOS/mkinitcpio-nokms.conf /etc/
+    if [[ $is_encrypt = 0 ]] && [[ ! -z $is_lvm ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt-lvm.preset /etc/mkinitcpio.d/linux.preset
+    elif [[ $is_encrypt = 0 ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt.preset /etc/mkinitcpio.d/linux.preset
+    elif [[ ! -z $is_lvm ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-lvm.preset /etc/mkinitcpio.d/linux.preset
+    else
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply.preset /etc/mkinitcpio.d/linux.preset
+    fi
 else
-    sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/
-    sudo cp -f /usr/local/share/phyOS/mkinitcpio-nokms.conf /etc/mkinitcpio.conf
+    if [[ $is_encrypt = 0 ]] && [[ ! -z $is_lvm ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.encrypt-lvm.preset /etc/mkinitcpio.d/linux.preset
+    elif [[ $is_encrypt = 0 ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.encrypt.preset /etc/mkinitcpio.d/linux.preset
+    elif [[ ! -z $is_lvm ]]; then
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.lvm.preset /etc/mkinitcpio.d/linux.preset
+    else
+        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset
+    fi
 fi
+
 sudo cp -f /usr/local/share/phyOS/grub/grub /etc/default/grub
 sudo mkinitcpio -P
 echo "### Grub theme reset please set it again ###"

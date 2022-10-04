@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cryptdev=$(lsblk -f -r | grep crypto_LUKS | awk '{print $1}' | while read d; do
+    cdev=$(lsblk -r /dev/$d | awk '{print $NF}' | grep -w "/" &> /dev/null && echo $d && sudo cryptsetup luksUUID /dev/$d)
+    [[ ! -z $cdev ]] && echo $cdev && break
+done
+)
+
+echo /dev/$cryptdev | awk '{print $1}'
+cryptdev=$(echo $cryptdev | awk '{print $2}')
+[[ -z $cryptdev ]] && exit 1
+
+source "$HOME/.config/phyos/phyos.conf"
+cryptdevice="    cryptdevice=UUID=$cryptdev:root"
+
+if [ -z $PLYMOUTH ]; then
+    sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-encrypt
+else
+    sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-ply-encrypt
+fi
