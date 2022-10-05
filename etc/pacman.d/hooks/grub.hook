@@ -8,4 +8,4 @@ Target = grub
 [Action]
 Description = ### Pacman hook to handle grub config ###
 When = PostTransaction
-Exec = /usr/local/bin/phyOS-grub-conf
+Exec = /bin/sh -c "/usr/bin/grub-install; /usr/local/bin/phyOS-grub-conf"

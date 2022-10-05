@@ -4,5 +4,4 @@
 
 sudo find /etc/grub.d/ -name '*linux*' | sudo xargs sed -i '/message/d;/xmessage/d;/lmessage/d;s/Arch\ Linux/phyOS/g;s/fallback/safegraphics/g'
 sudo find /etc/grub.d/ -name '*linux*' | while read f; do grep -A1 -n "safegraphics" $f | tr -d '-' | tr -d ':' | grep CMDLINE | awk '{print $1}' | while read n; do sudo sed -i "${n}s/\${GRUB_CMDLINE_LINUX}//" $f; done; done
-sudo /usr/bin/grub-install
 sudo /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
