@@ -13,8 +13,5 @@ cryptdev=$(echo $cryptdev | awk '{print $2}')
 source "$HOME/.config/phyos/phyos.conf"
 cryptdevice="    cryptdevice=UUID=$cryptdev:root"
 
-if [ $PLYMOUTH != "true" ]; then
-    sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-encrypt
-else
-    sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-ply-encrypt
-fi
+sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-encrypt
+sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-ply-encrypt
