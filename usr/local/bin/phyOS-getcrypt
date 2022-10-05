@@ -1,13 +1,11 @@
 #!/bin/sh
 
 cryptdev=$(lsblk -f -r | grep crypto_LUKS | awk '{print $1}' | while read d; do
-    cdev=$(lsblk -r /dev/$d | awk '{print $NF}' | grep -w "/" &> /dev/null && echo $d && sudo cryptsetup luksUUID /dev/$d)
+    cdev=$(lsblk -r /dev/$d | awk '{print $NF}' | grep -w "/" &> /dev/null && sudo cryptsetup luksUUID /dev/$d)
     [[ ! -z $cdev ]] && echo $cdev && break
 done
 )
 
-echo /dev/$cryptdev | awk '{print $1}'
-cryptdev=$(echo $cryptdev | awk '{print $2}')
 [[ -z $cryptdev ]] && exit 1
 
 source "$HOME/.config/phyos/phyos.conf"

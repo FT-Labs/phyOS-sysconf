@@ -3,7 +3,7 @@
 [[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf"
 
 device=$(phyOS-getcrypt)
-is_lvm=$(lsblk $device | awk '{print $(NF-1)}' | grep lvm)
+is_lvm=$(lsblk -r | grep -w "lvm /")
 is_encrypt=$?
 
 if [[ $PLYMOUTH = "true" ]]; then
