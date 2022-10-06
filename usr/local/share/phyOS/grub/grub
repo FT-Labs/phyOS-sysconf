@@ -3,7 +3,7 @@
 GRUB_DEFAULT="0"
 GRUB_TIMEOUT="5"
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo phyOS`
-GRUB_CMDLINE_LINUX="quiet splash loglevel=3 udev.log-priority=3 vt.global_cursor_default=0"
+GRUB_CMDLINE_LINUX=""
 GRUB_CMDLINE_LINUX_DEFAULT=""
 GRUB_DISABLE_OS_PROBER="false"
 
