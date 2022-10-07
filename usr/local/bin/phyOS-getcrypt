@@ -5,7 +5,11 @@
 #     [[ ! -z $cdev ]] && echo $cdev && break
 # done
 # )
-cryptdev=$(sudo dmsetup deps -o devname root | awk '{printf "/dev/";print $NF}' | tr -d "()" | sudo xargs cryptsetup luksUUID)
+root=$(mount | grep -w '/' | awk '{print $1}' | rev | cut -d '/' -f 1 | rev)
+is_lvm=$(sudo lvs -o lv_name | awk '{if(NR>1)print}' | tr -d " " | while read lv; do findmnt -l | grep '/dev/\S\+' | awk '{print $2}' | grep $lv; done)
+[[ $(echo "$is_lvm" | grep "$root") ]] && \
+	cryptdev=$(sudo dmsetup deps -o devname | grep $root | awk '{print $NF}' | tr -d "()" | sudo xargs dmsetup deps -o devname | awk '{print "/dev/"$NF}' | tr -d "()" | sudo xargs cryptsetup luksUUID) ||
+	cryptdev=$(sudo dmsetup deps -o devname | grep "$root" | awk '{print "/dev/"$NF}' | tr -d "()" | sudo xargs cryptsetup luksUUID)
 
 [[ $? != 0 ]] && exit 1
 cryptdevice="    cryptdevice=UUID=$cryptdev:root"

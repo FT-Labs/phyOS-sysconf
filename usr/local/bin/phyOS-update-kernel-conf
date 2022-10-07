@@ -2,7 +2,7 @@
 
 [[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf" || PLYMOUTH=true
 
-device=$(/usr/local/bin/phyOS-getcrypt)
+device=$(sudo /usr/local/bin/phyOS-getcrypt)
 is_encrypt=$?
 
 is_lvm=$(sudo lvs -o lv_name | awk '{if(NR>1)print}' | tr -d " " | while read lv; do findmnt -l | grep '/dev/\S\+' | awk '{print $2}' | grep $lv; done)
