@@ -14,6 +14,6 @@ is_lvm=$(sudo lvs -o lv_name | awk '{if(NR>1)print}' | tr -d " " | while read lv
 [[ $? != 0 ]] && exit 1
 cryptdevice="    cryptdevice=UUID=$cryptdev:root"
 
-sudo sed -i "36s/.*/$cryptdevice/" /usr/lib/initcpio/hooks/phy-encrypt
-sudo sed -i "36s/.*/$cryptdevice/" /usr/lib/initcpio/hooks/phy-ply-encrypt
+sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-encrypt
+sudo sed -i "36s/.*/$cryptdevice/" /etc/initcpio/hooks/phy-ply-encrypt
 exit 0
