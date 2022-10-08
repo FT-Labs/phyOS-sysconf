@@ -31,6 +31,12 @@ else
     fi
 fi
 
+ls /boot | grep vmlinuz | tr "-" " " | awk '{print $3}' | while read k; do
+    [[ ! -z $k ]] && sudo cp -f /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-$k.preset &&
+        sudo sed -i "s/vmlinuz-linux/vmlinuz-linux-$k/g;s/initramfs-linux/initramfs-linux-$k/g" /etc/mkinitcpio.d/linux-$k.preset
+done
+[[ -z $(ls /boot | grep -x "vmlinuz-linux") ]] && sudo rm /etc/mkinitcpio.d/linux.preset
+
 sudo mkinitcpio -P
 echo "### Grub theme reset please set it again ###"
 sudo grub-mkconfig -o /boot/grub/grub.cfg
