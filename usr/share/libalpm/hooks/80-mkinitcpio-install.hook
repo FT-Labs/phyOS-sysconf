@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = phyOS - Updating linux initcpios...
+When = PostTransaction
+Exec = /usr/local/bin/phyOS-update-kernel-conf
+NeedsTargets

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf" || PLYMOUTH=true
+[[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf" || pacman -Qq plymouth &>/dev/null && PLYMOUTH=true
 
 device=$(sudo /usr/local/bin/phyOS-getcrypt)
 is_encrypt=$?
