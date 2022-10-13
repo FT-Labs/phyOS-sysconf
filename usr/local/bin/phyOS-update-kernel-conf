@@ -31,7 +31,7 @@ else
     fi
 fi
 
-ls /boot | grep vmlinuz | tr "-" " " | awk '{print $3}' | while read k; do
+ls /boot | grep "vmlinuz-linux\|vmlinuz-linux-zen\|vmlinuz-linux-hardened\|vmlinuz-linux-lts" | tr "-" " " | awk '{print $3}' | while read k; do
     [[ ! -z $k ]] && sudo cp -f /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-$k.preset &&
         sudo sed -i "s/vmlinuz-linux/vmlinuz-linux-$k/g;s/initramfs-linux/initramfs-linux-$k/g" /etc/mkinitcpio.d/linux-$k.preset
 done
