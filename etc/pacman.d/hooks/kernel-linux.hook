@@ -23,4 +23,4 @@ Target = linux-jwrdegoede*
 [Action]
 Description = Pacman hook to update-grub automatically
 When = PostTransaction
-Exec = /bin/sh -c "pacman -Qq grub 2>/dev/null && grub-mkconfig -o /boot/grub/grub.cfg;"
+Exec = /bin/sh -c "pacman -Qq grub 2>/dev/null && /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg;"
