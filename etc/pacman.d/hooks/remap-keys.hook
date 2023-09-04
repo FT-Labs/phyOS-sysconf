@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = ### Remap hook for caps lock ###
+When = PostTransaction
+Exec = /bin/sh -c "/usr/share/phyos/util-scripts/pOS-remaps"
