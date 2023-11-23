@@ -1,0 +1,54 @@
+/*
+ * by Siddharth Dushantha 2020
+ * A very minimal graphical helper for sudo's askpass.
+ *
+ * Preview: https://0x0.st/iu4y.png
+ *
+ * Put the code below in a location such as ~/bin/askpass-rofi
+ *    #!/usr/bin/env bash
+ *    rofi -dmenu\
+ *        -password\
+ *        -i\
+ *        -no-fixed-num-lines\
+ *        -p "Password:"\
+ *        -theme ~/.config/rofi/themes/askpass.rasi
+ *
+ * Then the code below in your bashrc, zshrc, or something similar
+ *    SUDO_ASKPASS=~/bin/askpass-rofi
+ *
+ */
+
+@theme "~/.config/rofi/colors.rasi"
+
+#window {
+    /* Change the this according to your screen width */
+    width:      380px;
+
+    /* This padding is given just for aesthetic purposes */
+    padding:    40px;
+
+	border: 0px;
+    border-color: @foreground;
+    background-color: @background-alt;
+    border-radius: 15;
+}
+
+
+inputbar {
+	children: [ prompt, entry ];
+	background-color: @background-alt;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @selected;
+    padding: 6px;
+    text-color: @background-alt;
+    border-radius: 5px;
+}
+
+entry {
+    padding: 6px;
+    text-color: @foreground;
+    background-color: @background-alt;
+}
