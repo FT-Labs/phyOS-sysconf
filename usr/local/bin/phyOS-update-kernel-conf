@@ -1,42 +1,29 @@
 #!/bin/bash
 
-[[ -f "$HOME/.config/phyos/phyos.conf" ]] && source "$HOME/.config/phyos/phyos.conf" || pacman -Qq plymouth &>/dev/null && PLYMOUTH=true
+[ $UID != 0 ] && echo "Run as root user" && exit 1
 
-device=$(sudo /usr/local/bin/phyOS-getcrypt)
+device=$(/usr/local/bin/phyOS-getcrypt)
 is_encrypt=$?
 
-is_lvm=$(sudo lvs -o lv_name | awk '{if(NR>1)print}' | tr -d " " | while read lv; do findmnt -l | grep '/dev/\S\+' | awk '{print $2}' | grep $lv; done)
+is_lvm=$(lvs -o lv_name | awk '{if(NR>1)print}' | tr -d " " | while read lv; do findmnt -l | grep '/dev/\S\+' | awk '{print $2}' | grep $lv; done)
 
-if [[ $PLYMOUTH = "true" ]]; then
-    sudo cp -f /usr/local/share/phyOS/grub/grub-ply /etc/default/grub
-    if [[ $is_encrypt = 0 ]] && [[ ! -z $is_lvm ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt-lvm.preset /etc/mkinitcpio.d/linux.preset
-    elif [[ $is_encrypt = 0 ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt.preset /etc/mkinitcpio.d/linux.preset
-    elif [[ ! -z $is_lvm ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-lvm.preset /etc/mkinitcpio.d/linux.preset
-    else
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply.preset /etc/mkinitcpio.d/linux.preset
-    fi
+cp -f /usr/local/share/phyOS/grub/grub-ply /etc/default/grub
+if [[ $is_encrypt = 0 ]] && [[ ! -z $is_lvm ]]; then
+	cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt-lvm.preset /etc/mkinitcpio.d/linux.preset
+elif [[ $is_encrypt = 0 ]]; then
+	cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-encrypt.preset /etc/mkinitcpio.d/linux.preset
+elif [[ ! -z $is_lvm ]]; then
+	cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply-lvm.preset /etc/mkinitcpio.d/linux.preset
 else
-    sudo cp -f /usr/local/share/phyOS/grub/grub /etc/default/grub
-    if [[ $is_encrypt = 0 ]] && [[ ! -z $is_lvm ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.encrypt-lvm.preset /etc/mkinitcpio.d/linux.preset
-    elif [[ $is_encrypt = 0 ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.encrypt.preset /etc/mkinitcpio.d/linux.preset
-    elif [[ ! -z $is_lvm ]]; then
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.lvm.preset /etc/mkinitcpio.d/linux.preset
-    else
-        sudo cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux.preset
-    fi
+	cp -f /usr/local/share/phyOS/mkinitcpio.d/linux.ply.preset /etc/mkinitcpio.d/linux.preset
 fi
 
 ls /boot | grep "vmlinuz-linux\|vmlinuz-linux-zen\|vmlinuz-linux-hardened\|vmlinuz-linux-lts" | tr "-" " " | awk '{print $3}' | while read k; do
-    [[ ! -z $k ]] && sudo cp -f /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-$k.preset &&
-        sudo sed -i "s/vmlinuz-linux/vmlinuz-linux-$k/g;s/initramfs-linux/initramfs-linux-$k/g" /etc/mkinitcpio.d/linux-$k.preset
+    [[ ! -z $k ]] && cp -f /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-$k.preset &&
+        sed -i "s/vmlinuz-linux/vmlinuz-linux-$k/g;s/initramfs-linux/initramfs-linux-$k/g" /etc/mkinitcpio.d/linux-$k.preset
 done
-[[ -z $(ls /boot | grep -x "vmlinuz-linux") ]] && sudo rm /etc/mkinitcpio.d/linux.preset
+[[ -z $(ls /boot | grep -x "vmlinuz-linux") ]] && rm /etc/mkinitcpio.d/linux.preset
 
-sudo mkinitcpio -P
+mkinitcpio -P
 echo "### Grub theme reset please set it again ###"
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg

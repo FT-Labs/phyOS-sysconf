@@ -1,4 +1,6 @@
 #!/bin/bash
 
-sudo cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release
-sudo cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release-phyOS
+[ $UID != 0 ] && echo "Run as root user" && exit 1
+
+cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release
+cp /usr/local/share/phyOS/release/os-release-phyOS /usr/lib/os-release-phyOS

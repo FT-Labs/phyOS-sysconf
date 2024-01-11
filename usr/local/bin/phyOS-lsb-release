@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sudo cp /usr/local/share/phyOS/release/lsb-release-phyOS /etc/lsb-release
+[ $UID != 0 ] && echo "Run as root user" && exit 1
+
+cp /usr/local/share/phyOS/release/lsb-release-phyOS /etc/lsb-release
