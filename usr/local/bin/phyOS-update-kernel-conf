@@ -2,6 +2,9 @@
 
 [ $UID != 0 ] && echo "Run as root user" && exit 1
 
+[ -f /etc/mkinitcpio.d/linux.preset ] && source /etc/mkinitcpio.d/linux.preset
+[ "${PRESETS}" = "archiso" ] && exit 0
+
 device=$(/usr/local/bin/phyOS-getcrypt)
 is_encrypt=$?
 
