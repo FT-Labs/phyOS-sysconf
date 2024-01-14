@@ -4,6 +4,9 @@ Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/vmlinuz
 Target = usr/lib/initcpio/*
+Target = usr/lib/firmware/*
+Target = usr/src/*/dkms.conf
+
 
 [Action]
 Description = phyOS - Updating linux initcpios...
